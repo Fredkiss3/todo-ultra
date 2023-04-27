@@ -23,6 +23,8 @@ export default class ExceptionHandler extends HttpExceptionHandler {
     '500..599': 'errors/server-error',
   }
 
+  protected disableStatusPagesInDevelopment: boolean = true
+
   constructor() {
     super(Logger)
   }
