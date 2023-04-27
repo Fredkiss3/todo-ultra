@@ -4,6 +4,7 @@
  * Feel free to let us know via PR, if you find something broken in this config
  * file.
  */
+// @ts-ignore
 import Env from '@ioc:Adonis/Core/Env'
 import { ShieldConfig } from '@ioc:Adonis/Addons/Shield'
 
