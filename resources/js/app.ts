@@ -1,4 +1,5 @@
 import '../css/app.css'
+import './components/index'
 import 'unpoly'
 
 /**

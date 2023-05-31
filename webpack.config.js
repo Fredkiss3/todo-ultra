@@ -45,10 +45,12 @@ Encore.setPublicPath('/assets')
 | entrypoints.
 |
 */
-Encore.addEntry('app', './resources/js/app.ts').enableTypeScriptLoader((tsConfig) => {
-  tsConfig.logLevel = 'error'
-  tsConfig.transpileOnly = !Encore.isProduction()
-})
+Encore.addEntry('app', './resources/js/app.ts')
+  .enableTypeScriptLoader((tsConfig) => {
+    tsConfig.logLevel = 'error'
+    tsConfig.transpileOnly = !Encore.isProduction()
+  })
+  .enablePreactPreset({ preactCompat: true })
 
 /*
 |--------------------------------------------------------------------------

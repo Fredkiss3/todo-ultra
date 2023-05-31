@@ -6,6 +6,8 @@
     "lib": ["dom"],
     "outDir": "build",
     "rootDir": "./",
+    "jsx": "react",
+    "jsxFactory": "h",
     "sourceMap": true,
     "paths": {
       "App/*": ["./app/*"],
