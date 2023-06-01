@@ -19,7 +19,7 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
-import './routes/auth'
+import HealthCheck from '@ioc:Adonis/Core/HealthCheck'
 
 Route.get('/ping', () => {
   return 'Pong'
@@ -27,4 +27,15 @@ Route.get('/ping', () => {
 
 Route.get('/', async ({ view }) => {
   return view.render('home/index')
+})
+
+Route.group(() => {
+  Route.get('/login', ({ view }) => view.render('auth/login'))
+  Route.get('/register', ({ view }) => view.render('auth/register'))
+}).prefix('/auth')
+
+Route.get('/health', async ({ response }) => {
+  const report = await HealthCheck.getReport()
+
+  return report.healthy ? response.ok(report) : response.badRequest(report)
 })
