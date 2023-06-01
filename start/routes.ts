@@ -21,13 +21,33 @@
 import Route from '@ioc:Adonis/Core/Route'
 import HealthCheck from '@ioc:Adonis/Core/HealthCheck'
 import Cache from '@ioc:Adonis/Addons/Cache'
+import { prisma } from '@ioc:Adonis/Addons/Prisma'
 
 Route.get('/ping', () => {
   return 'Pong'
 })
 
 Route.get('/', async ({ view }) => {
-  const tasks = await Cache.tags(['posts']).remember('', null, async () => ['eat', 'sleep', 'code'])
+  const tasks = await Cache.tags(['tasks']).remember('', null, async () => {
+    // await prisma.task.createMany({
+    //   data: [
+    //     {
+    //       title: 'eat',
+    //       description: 'kebab',
+    //     },
+    //     {
+    //       title: 'sleep',
+    //       description: '',
+    //     },
+    //     {
+    //       title: 'code',
+    //       description: 'with coffee',
+    //     },
+    //   ],
+    // })
+    return (await prisma.task.findMany({})) ?? []
+  })
+
   return view.render('home/index', {
     tasks: tasks,
   })

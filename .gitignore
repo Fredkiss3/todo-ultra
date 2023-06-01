@@ -5,3 +5,4 @@ coverage
 .env
 tmp
 public/assets/
+*_keyfile

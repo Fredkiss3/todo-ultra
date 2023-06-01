@@ -9,11 +9,7 @@
     </h1>
 
     <h2 class="text-2xl font-bold">Tasks</h2>
-    <ul>
-      @each(task in tasks)
-        <li> {{ task }} </li>
-      @end
-    </ul>
+    {{inspect(tasks)}}
 
 
     <custom-select></custom-select>
