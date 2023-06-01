@@ -1,27 +1,34 @@
-ARG NODE_IMAGE=node:16.13.1-alpine
+ARG NODE_IMAGE=node:18-slim
 
 FROM $NODE_IMAGE AS base
-RUN apk --no-cache add dumb-init
-RUN mkdir -p /home/node/app && chown node:node /home/node/app
-WORKDIR /home/node/app
-USER node
-RUN mkdir tmp
+WORKDIR /app
+
+# Install dependencies with PNPM
 
 FROM base AS dependencies
-# FIXME: use PNPM
-COPY --chown=node:node ./package*.json ./
-RUN npm ci
-COPY --chown=node:node . .
+COPY ./package.json ./pnpm-lock.yaml ./
+RUN yarn global add pnpm && pnpm install --shamefully-hoist --strict-peer-dependencies=false --frozen-lockfile
+
+##### BUILDER
 
 FROM dependencies AS build
+WORKDIR /app
+COPY --from=dependencies /app/node_modules ./node_modules
+COPY . .
 RUN node ace build --production
+
+##### RUNNER
 
 FROM base AS production
 ENV NODE_ENV=production
-ENV PORT=$PORT
+ENV PORT=80
 ENV HOST=0.0.0.0
-COPY --chown=node:node ./package*.json ./
-RUN npm ci --production
-COPY --chown=node:node --from=build /home/node/app/build .
-EXPOSE $PORT
-CMD [ "dumb-init", "node", "server.js" ]
+
+RUN addgroup --system --gid 1001 adonis
+RUN adduser --system --uid 1001 adonis
+
+COPY --chown=adonis:adonis ./package.json ./pnpm-lock.yaml ./
+RUN yarn global add pnpm && pnpm install --shamefully-hoist --strict-peer-dependencies=false --frozen-lockfile
+COPY --chown=adonis:adonis --from=build /app/build .
+EXPOSE 80
+CMD [ "node", "server.js" ]
