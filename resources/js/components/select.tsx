@@ -5,7 +5,7 @@ type SelectProps = {
   options: string[]
 }
 
-export function Select({ options }: SelectProps) {
+export function Select({}: SelectProps) {
   useEffect(() => {
     console.log('Custom preact element')
   }, [])
