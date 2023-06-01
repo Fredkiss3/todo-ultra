@@ -1,0 +1,16 @@
+node_modules/
+.DS_Store
+.DS_STORE
+.idea/
+build
+coverage
+.env
+tmp
+
+# Additional good to have ignores for dockerignore
+Dockerfile*
+docker-compose*
+.dockerignore
+*.md
+.git
+.gitignore

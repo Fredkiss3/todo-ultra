@@ -8,7 +8,8 @@
     "start": "node server.js",
     "test": "node ace test",
     "lint": "eslint . --ext=.ts",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "dockercli:redis": "docker exec -it redis /bin/sh"
   },
   "eslintConfig": {
     "extends": [
