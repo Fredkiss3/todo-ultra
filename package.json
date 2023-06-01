@@ -72,6 +72,7 @@
     "@adonisjs/shield": "^7.0.0",
     "@adonisjs/view": "^6.1.0",
     "@babel/plugin-transform-react-jsx": "^7.22.3",
+    "@melchyore/adonis-cache": "^1.0.6",
     "pino-pretty": "^10.0.0",
     "preact": "^10.15.1",
     "preact-custom-element": "^4.2.1",

@@ -3,7 +3,8 @@
   "commands": [
     "./commands",
     "@adonisjs/core/build/commands/index.js",
-    "@adonisjs/repl/build/commands"
+    "@adonisjs/repl/build/commands",
+    "@melchyore/adonis-cache/build/commands"
   ],
   "exceptionHandlerNamespace": "App/Exceptions/Handler",
   "aliases": {
@@ -22,7 +23,8 @@
     "@adonisjs/session",
     "@adonisjs/view",
     "@adonisjs/shield",
-    "@adonisjs/redis"
+    "@adonisjs/redis",
+    "@melchyore/adonis-cache"
   ],
   "metaFiles": [
     {

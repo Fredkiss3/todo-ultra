@@ -37,7 +37,8 @@
       "@adonisjs/view",
       "@adonisjs/shield",
       "@japa/preset-adonis/build/adonis-typings",
-      "@adonisjs/redis"
+      "@adonisjs/redis",
+      "@melchyore/adonis-cache"
     ]
   }
 }

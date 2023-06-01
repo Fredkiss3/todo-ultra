@@ -20,13 +20,17 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 import HealthCheck from '@ioc:Adonis/Core/HealthCheck'
+import Cache from '@ioc:Adonis/Addons/Cache'
 
 Route.get('/ping', () => {
   return 'Pong'
 })
 
 Route.get('/', async ({ view }) => {
-  return view.render('home/index')
+  const tasks = await Cache.tags(['posts']).remember('', null, async () => ['eat', 'sleep', 'code'])
+  return view.render('home/index', {
+    tasks: tasks,
+  })
 })
 
 Route.group(() => {
