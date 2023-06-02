@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "node ace serve --watch",
+    "dev": "PORT=3333 node ace serve --watch",
     "build": "node ace build --production",
     "start": "node server.js",
     "test": "node ace test",
     "lint": "eslint . --ext=.ts",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "dockercli:redis": "docker exec -it redis /bin/sh"
   },
   "eslintConfig": {
     "extends": [
@@ -52,10 +53,10 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-adonis": "^2.1.1",
     "eslint-plugin-prettier": "^4.2.1",
-    "pino-pretty": "^10.0.0",
     "postcss": "^8.4.23",
     "postcss-loader": "^7.2.4",
     "prettier": "^2.8.8",
+    "prisma": "^4.15.0",
     "tailwindcss": "^3.3.2",
     "ts-loader": "^9.4.2",
     "typescript": "~5.0.4",
@@ -66,16 +67,23 @@
   },
   "dependencies": {
     "@adonisjs/core": "^5.8.0",
+    "@adonisjs/redis": "^7.3.2",
     "@adonisjs/repl": "^3.1.0",
     "@adonisjs/session": "^6.2.0",
     "@adonisjs/shield": "^7.0.0",
     "@adonisjs/view": "^6.1.0",
     "@babel/plugin-transform-react-jsx": "^7.22.3",
+    "@melchyore/adonis-cache": "^1.0.6",
+    "@prisma/client": "^4.15.0",
+    "@wahyubucil/adonis-prisma": "^0.4.0",
+    "clsx": "^1.2.1",
+    "pino-pretty": "^10.0.0",
     "preact": "^10.15.1",
     "preact-custom-element": "^4.2.1",
     "proxy-addr": "^2.0.7",
     "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.21",
+    "tailwind-merge": "^1.13.0",
     "unpoly": "^3.0.0"
   }
 }

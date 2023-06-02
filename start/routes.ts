@@ -19,12 +19,53 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
-import './routes/auth'
+import HealthCheck from '@ioc:Adonis/Core/HealthCheck'
+import Cache from '@ioc:Adonis/Addons/Cache'
+import { prisma } from '@ioc:Adonis/Addons/Prisma'
 
 Route.get('/ping', () => {
   return 'Pong'
 })
 
+function wait(ms: number): Promise<void> {
+  // Wait for the specified amount of time
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
 Route.get('/', async ({ view }) => {
-  return view.render('home/index')
+  const tasks = await Cache.remember('tasks', null, async () => {
+    // await prisma.task.createMany({
+    //   data: [
+    //     {
+    //       title: 'eat',
+    //       description: 'kebab',
+    //     },
+    //     {
+    //       title: 'sleep',
+    //       description: '',
+    //     },
+    //     {
+    //       title: 'code',
+    //       description: 'with coffee',
+    //     },
+    //   ],
+    // })
+    return (await prisma.task.findMany({})) ?? []
+  })
+
+  await wait(1000)
+  return view.render('home/index', {
+    tasks: tasks,
+  })
+})
+
+Route.group(() => {
+  Route.get('/login', ({ view }) => view.render('auth/login'))
+  Route.get('/register', ({ view }) => view.render('auth/register'))
+}).prefix('/auth')
+
+Route.get('/health', async ({ response }) => {
+  const report = await HealthCheck.getReport()
+
+  return report.healthy ? response.ok(report) : response.badRequest(report)
 })

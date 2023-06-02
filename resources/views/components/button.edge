@@ -1,0 +1,6 @@
+<button type="{{ type ?? 'button' }}" class="{{clsx('font-bold text-lg relative group focus-visible:outline-none', $props.class)}}">
+  <span
+    class="relative border-2 border-black inline-block w-full bg-[#9f6dec] h-full px-3 py-2 z-10 -translate-x-1 -translate-y-1 group-focus:translate-x-0 group-focus:translate-y-0 transition-transform duration-150"
+  >{{ text }}</span>
+  <span class="absolute inline-block bg-black  w-full h-full inset-0 pointer-events-none"></span>
+</button>
