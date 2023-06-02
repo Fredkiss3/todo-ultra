@@ -27,8 +27,13 @@ Route.get('/ping', () => {
   return 'Pong'
 })
 
+function wait(ms: number): Promise<void> {
+  // Wait for the specified amount of time
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
 Route.get('/', async ({ view }) => {
-  const tasks = await Cache.tags(['tasks']).remember('', null, async () => {
+  const tasks = await Cache.remember('tasks', null, async () => {
     // await prisma.task.createMany({
     //   data: [
     //     {
@@ -48,6 +53,7 @@ Route.get('/', async ({ view }) => {
     return (await prisma.task.findMany({})) ?? []
   })
 
+  await wait(1000)
   return view.render('home/index', {
     tasks: tasks,
   })
