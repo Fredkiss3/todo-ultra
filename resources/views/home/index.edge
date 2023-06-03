@@ -4,24 +4,24 @@
 @section('main')
 
 <section class="p-10 flex flex-col gap-4">
-    <h1 class="text-3xl font-bold">
-      Manage your tasks, focus on what is important
-    </h1>
+  <h1 class="text-3xl font-bold">
+    Manage your tasks, focus on what is important
+  </h1>
 
-    <h2 class="text-2xl font-bold">Tasks</h2>
-    {{inspect(tasks)}}
-    {{inspect(await cache.get('tasks'))}}
-
-
-    @!button({
-      text: 'Login',
-    })
-
-    {{ new Date() }}
+  <h2 class="text-2xl font-bold">Tasks</h2>
+  {{inspect(tasks)}}
+  {{inspect(auth.user)}}
 
 
-    <custom-select></custom-select>
-  </section>
+  @!button({
+  text: 'Login',
+  })
+
+  {{ new Date() }}
+
+
+  <custom-select></custom-select>
+</section>
 
 
 @endsection

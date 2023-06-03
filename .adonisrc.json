@@ -17,7 +17,8 @@
   "preloads": [
     "./start/routes",
     "./start/kernel",
-    "./start/globals"
+    "./start/globals",
+    "./start/validator"
   ],
   "providers": [
     "./providers/AppProvider",

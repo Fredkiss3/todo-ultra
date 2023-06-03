@@ -3,10 +3,38 @@
 
 @section('main')
 
-<section>
-    <h1 class="text-3xl font-bold">
-      Register
-    </h1>
+<section class="flex flex-col p-4 gap-2">
+  <h1 class="text-3xl font-bold">
+    Register
+  </h1>
+
+  <form method="POST" class="flex flex-col gap-4">
+    {{ csrfField() }}
+    <label for="firstName">Your first name</label>
+    <input type="text" name="firstName" id="firstName" class="border-2 border-black px-3 py-2" placeholder="ex: Alex"
+      value="{{ flashMessages.get('firstName') ?? '' }}" />
+    <span class="text-red-500">{{ flashMessages.get('errors.firstName', '') }}</span>
+
+
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" class="border-2 border-black px-3 py-2"
+      value="{{ flashMessages.get('email') ?? '' }}" placeholder="ex: email@domain.com" />
+    <span class="text-red-500">{{ flashMessages.get('errors.email', '') }}</span>
+
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" class="border-2 border-black px-3 py-2"
+      placeholder="a secure password" />
+    <span class="text-red-500">{{ flashMessages.get('errors.password') ?? '' }}</span>
+
+    <label for="password_confirmation">Confirm password</label>
+    <input type="password" name="password_confirmation" id="password_confirmation"
+      class="border-2 border-black px-3 py-2" placeholder="a secure password" />
+    <span class="text-red-500">{{ flashMessages.get('errors.password_confirmation') ?? '' }}</span>
+
+    @component('components/button', { type: 'submit' })
+    Register
+    @end
+  </form>
 </section>
 
 @endsection

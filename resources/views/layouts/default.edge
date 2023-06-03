@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,22 @@
   @entryPointStyles('app')
   @entryPointScripts('app')
 </head>
+
 <body>
   <header>
     <nav>
-      <a href="/" class="underline text-indigo-700">Home</a>
+      @if(!auth.isLoggedIn)
       <a href="/auth/login" class="underline text-indigo-700">Login</a>
       <a href="/auth/register" class="underline text-indigo-700">Register</a>
+      @else
+      <a href="/" class="underline text-indigo-700">Home</a>
+      <form action="{{ route('auth.logout') }}?_method=DELETE" method="POST" class="inline">
+        {{ csrfField() }}
+        <button class="underline text-indigo-700">
+          logout
+        </button>
+      </form>
+      @end
     </nav>
   </header>
 
@@ -22,4 +33,5 @@
 
   <footer></footer>
 </body>
+
 </html>
