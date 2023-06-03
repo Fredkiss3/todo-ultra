@@ -39,7 +39,8 @@
       "@japa/preset-adonis/build/adonis-typings",
       "@adonisjs/redis",
       "@melchyore/adonis-cache",
-      "@wahyubucil/adonis-prisma"
+      "@wahyubucil/adonis-prisma",
+      "@adonisjs/auth"
     ]
   }
 }

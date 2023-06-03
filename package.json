@@ -9,7 +9,8 @@
     "test": "node ace test",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write .",
-    "dockercli:redis": "docker exec -it redis /bin/sh"
+    "dockercli:redis": "docker exec -it redis /bin/sh",
+    "prisma": "prisma"
   },
   "eslintConfig": {
     "extends": [
@@ -66,6 +67,7 @@
     "youch-terminal": "^2.2.0"
   },
   "dependencies": {
+    "@adonisjs/auth": "^8.2.3",
     "@adonisjs/core": "^5.8.0",
     "@adonisjs/redis": "^7.3.2",
     "@adonisjs/repl": "^3.1.0",

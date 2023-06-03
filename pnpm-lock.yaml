@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 dependencies:
+  '@adonisjs/auth':
+    specifier: ^8.2.3
+    version: 8.2.3(@adonisjs/application@5.3.0)(@adonisjs/core@5.9.0)(@adonisjs/redis@7.3.2)(@adonisjs/session@6.4.0)
   '@adonisjs/core':
     specifier: ^5.8.0
     version: 5.9.0
@@ -30,7 +33,7 @@ dependencies:
     version: 4.15.0(prisma@4.15.0)
   '@wahyubucil/adonis-prisma':
     specifier: ^0.4.0
-    version: 0.4.0(@adonisjs/core@5.9.0)(@prisma/client@4.15.0)(prisma@4.15.0)
+    version: 0.4.0(@adonisjs/auth@8.2.3)(@adonisjs/core@5.9.0)(@prisma/client@4.15.0)(prisma@4.15.0)
   clsx:
     specifier: ^1.2.1
     version: 1.2.1
@@ -191,6 +194,34 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@adonisjs/auth@8.2.3(@adonisjs/application@5.3.0)(@adonisjs/core@5.9.0)(@adonisjs/redis@7.3.2)(@adonisjs/session@6.4.0):
+    resolution: {integrity: sha512-js9e8AHEsNC/8MGvho6MgL+uXr8SlhTg9MJJDWQBBiqsKkT7+H7NMP/pLbuSzYaaf40t2u/OXfq6wXuIC5ZYvw==}
+    peerDependencies:
+      '@adonisjs/core': ^5.7.1
+      '@adonisjs/i18n': ^1.5.0
+      '@adonisjs/lucid': ^18.0.0
+      '@adonisjs/redis': ^7.2.0
+      '@adonisjs/session': ^6.2.0
+    peerDependenciesMeta:
+      '@adonisjs/i18n':
+        optional: true
+      '@adonisjs/lucid':
+        optional: true
+      '@adonisjs/redis':
+        optional: true
+      '@adonisjs/session':
+        optional: true
+    dependencies:
+      '@adonisjs/core': 5.9.0
+      '@adonisjs/redis': 7.3.2(@adonisjs/core@5.9.0)
+      '@adonisjs/session': 6.4.0(@adonisjs/core@5.9.0)
+      '@poppinss/hooks': 5.0.3(@adonisjs/application@5.3.0)
+      '@poppinss/utils': 5.0.0
+      luxon: 3.3.0
+    transitivePeerDependencies:
+      - '@adonisjs/application'
+    dev: false
 
   /@adonisjs/bodyparser@8.1.7(@adonisjs/application@5.3.0)(@adonisjs/drive@2.3.0)(@adonisjs/http-server@5.12.0):
     resolution: {integrity: sha512-2ixzKGszAez1Qq6KNsNs0LcKSfqnZMiaqMleuTh/m4pBLw9CTsVqFS2YH181+6pBhFcTVcXkByh6T1P48Tq5Cw==}
@@ -2779,7 +2810,7 @@ packages:
       eslint-visitor-keys: 3.4.0
     dev: true
 
-  /@wahyubucil/adonis-prisma@0.4.0(@adonisjs/core@5.9.0)(@prisma/client@4.15.0)(prisma@4.15.0):
+  /@wahyubucil/adonis-prisma@0.4.0(@adonisjs/auth@8.2.3)(@adonisjs/core@5.9.0)(@prisma/client@4.15.0)(prisma@4.15.0):
     resolution: {integrity: sha512-zCQh5s60jDW8zg4Q1BLcz+xYUIFC6nTZH/6yUVAVeMLJdeGtKViSuyF6qbG5MzYy7PqeOm2l/Yu82rwYKhphUg==}
     peerDependencies:
       '@adonisjs/auth': ^8.2.1
@@ -2790,6 +2821,7 @@ packages:
       '@adonisjs/auth':
         optional: true
     dependencies:
+      '@adonisjs/auth': 8.2.3(@adonisjs/application@5.3.0)(@adonisjs/core@5.9.0)(@adonisjs/redis@7.3.2)(@adonisjs/session@6.4.0)
       '@adonisjs/core': 5.9.0
       '@poppinss/utils': 5.0.0
       '@prisma/client': 4.15.0(prisma@4.15.0)

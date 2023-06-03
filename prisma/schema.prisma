@@ -18,9 +18,9 @@ model Task {
 
 model User {
   id              String   @id @default(auto()) @map("_id") @db.ObjectId
-  username        String
+  firstName       String
   email           String   @unique
-  password        String?
+  password        String
   rememberMeToken String?
   updatedAt       DateTime @updatedAt
   createdAt       DateTime @default(now())
