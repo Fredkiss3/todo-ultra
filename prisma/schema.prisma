@@ -15,3 +15,13 @@ model Task {
   title       String
   description String
 }
+
+model User {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  username        String
+  email           String   @unique
+  password        String?
+  rememberMeToken String?
+  updatedAt       DateTime @updatedAt
+  createdAt       DateTime @default(now())
+}
