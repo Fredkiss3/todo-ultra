@@ -80,6 +80,7 @@
     "@prisma/client": "^4.15.0",
     "@wahyubucil/adonis-prisma": "^0.4.0",
     "clsx": "^1.2.1",
+    "phosphor-react": "^1.4.1",
     "pino-pretty": "^10.0.0",
     "preact": "^10.15.1",
     "preact-custom-element": "^4.2.1",

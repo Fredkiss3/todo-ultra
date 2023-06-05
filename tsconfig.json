@@ -1,34 +1,20 @@
 {
   "extends": "adonis-preset-ts/tsconfig.json",
-  "include": [
-    "**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "build"
-  ],
+  "include": ["**/*"],
+  "exclude": ["node_modules", "build"],
   "compilerOptions": {
-    "lib": [
-      "dom"
-    ],
+    "lib": ["dom"],
     "outDir": "build",
     "rootDir": "./",
     "jsx": "react",
     "jsxFactory": "h",
+    "jsxFragmentFactory": "h",
     "sourceMap": true,
     "paths": {
-      "App/*": [
-        "./app/*"
-      ],
-      "Config/*": [
-        "./config/*"
-      ],
-      "Contracts/*": [
-        "./contracts/*"
-      ],
-      "Database/*": [
-        "./database/*"
-      ]
+      "App/*": ["./app/*"],
+      "Config/*": ["./config/*"],
+      "Contracts/*": ["./contracts/*"],
+      "Database/*": ["./database/*"]
     },
     "types": [
       "@adonisjs/core",

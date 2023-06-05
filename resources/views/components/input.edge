@@ -1,0 +1,26 @@
+<fieldset class="flex flex-col gap-2">
+  <label for="{{ $props.id ?? $props.name }}" class="font-semibold">{{ $props.label ?? 'label' }}</label>
+  <div class="{{
+    clsx(
+      'border-[1.5px] border-black px-3 py-2 bg-white rounded-sm',
+      'flex items-center justify-between gap-2',
+      'focus-within:ring-2 ring-primary',
+      $props.class
+    )
+  }}">
+    <input type="{{ $props.type ?? 'text' }}" id="{{ $props.id ?? $props.name }}" name="{{ $props.name }}"
+      value="{{ $props.value ?? '' }}" {{ $props.required ? 'required' : '' }}
+      placeholder="{{ $props.placeholder ?? 'placeholder' }}" {{ $props.required ? 'required' : '' }}
+      class="w-full focus:outline-none placeholder:font-semibold font-semibold" />
+
+    @if($slots.icon)
+    {{{ await $slots.icon() }}}
+    @endif
+  </div>
+
+  @if($props.error)
+  @component('components/alert')
+  {{ $props.error }}
+  @end
+  @endif
+</fieldset>

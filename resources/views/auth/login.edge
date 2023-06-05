@@ -3,60 +3,90 @@
 
 @section('main')
 
-<section class="flex flex-col p-4 gap-2">
+<section class="flex flex-col p-4 gap-4">
   <h1 class="text-3xl font-bold">
     Login
   </h1>
 
+  <h2 class="text-gray-600">Enter your account details</h2>
 
 
   @if(flashMessages.get('auth.error')?.startsWith('E_UNAUTHORIZED_ACCESS'))
 
-  <div class="border-2 border-red-500 bg-red-100 text-red-500 px-2 py-3" role="alert" aria-live="assertive">
-    Login to have access to this resource
-  </div>
+  @component('components/alert')
+  Login to have access to this resource
+  @end
 
   @elseif(flashMessages.get('auth.error'))
 
-  <div class="border-2 border-red-500 bg-red-100 text-red-500 px-2 py-3" role="alert" aria-live="assertive">
-    Invalid credentials
-  </div>
+  @component('components/alert')
+  Invalid credentials
+  @end
 
   @endif
 
   @if(flashMessages.get('github.auth.error'))
-  <div class="border-2 border-red-500 bg-red-100 text-red-500 px-2 py-3" role="alert" aria-live="assertive">
-    {{flashMessages.get('github.auth.error')}}
-  </div>
+  @component('components/alert')
+  {{flashMessages.get('github.auth.error')}}
+  @end
   @endif
 
   <form method="POST" class="flex flex-col gap-4">
     {{ csrfField() }}
 
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email" class="border-2 border-black px-3 py-2"
-      value="{{ flashMessages.get('email') ?? '' }}" placeholder="ex: email@domain.com" />
-    <span class="text-red-500">{{ flashMessages.get('errors.email') ?? '' }}</span>
+    @component('components/input', {
+    type: 'email',
+    label: 'Email',
+    name: 'email',
+    placeholder: 'ex: email@domain.com',
+    error: flashMessages.get('errors.email', ''),
+    value: flashMessages.get('email', ''),
+    required: true
+    })
+    @slot('icon')
+    @!component('components/icons/email', {class: 'h-4 w-4'})
+    @end
+    @end
 
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" class="border-2 border-black px-3 py-2"
-      placeholder="a secure password" />
-    <span class="text-red-500">{{ flashMessages.get('errors.password') ?? '' }}</span>
+    @component('components/input', {
+    type: 'password',
+    label: 'Password',
+    name: 'password',
+    placeholder: 'a secure password',
+    error: flashMessages.get('errors.password', ''),
+    required: true
+    })
+    @slot('icon')
+    <password-input-toggle class="inline-flex" field-id="password" hidden-text="Show password"
+      visible-text="Hide password">
+    </password-input-toggle>
+    @end
+    @end
 
-    <div class="flex gap-2 items-center">
-      <input type="checkbox" id="rememberMe" name="rememberMe" {{ flashMessages.get('rememberMe') ? 'checked' : '' }} />
-      <label for="rememberMe">Remember me</label>
-    </div>
-    <span class="text-red-500">{{ flashMessages.get('errors.rememberMe') ?? '' }}</span>
+    @!component('components/checkbox', {
+    label: 'Remember me',
+    name: 'rememberMe',
+    checked: flashMessages.get('rememberMe'),
+    error: flashMessages.get('errors.password', ''),
+    })
 
     @component('components/button', { type: 'submit' })
     Login with email
     @end
 
+    <div class="flex gap-2 items-center justify-center px-8">
+      <hr class="h-[2px] w-full bg-black" />
+      <span>Or</span>
+      <hr class="h-[2px] w-full bg-black" />
+    </div>
+
     @component('components/linkbutton', { href: '/github/redirect', variant: 'dark', disableSpaNavigation: true })
     Login with Github
     @end
   </form>
+
+  <p class="text-center">You don't have an account ? <a href="/auth/register" class="underline font-bold">Create one</a>
+  </p>
 </section>
 
 

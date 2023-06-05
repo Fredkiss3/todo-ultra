@@ -40,6 +40,9 @@ dependencies:
   clsx:
     specifier: ^1.2.1
     version: 1.2.1
+  phosphor-react:
+    specifier: ^1.4.1
+    version: 1.4.1(react@18.2.0)
   pino-pretty:
     specifier: ^10.0.0
     version: 10.0.0
@@ -6640,6 +6643,13 @@ packages:
       slice-ansi: 4.0.0
       wrap-ansi: 6.2.0
 
+  /loose-envify@1.4.0:
+    resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
+    hasBin: true
+    dependencies:
+      js-tokens: 4.0.0
+    dev: false
+
   /loupe@2.3.6:
     resolution: {integrity: sha512-RaPMZKiMy8/JruncMU5Bt6na1eftNoo++R4Y+N2FrxkDVTrGvcyzFTsaGif4QTeKESheMGegbhw6iUAq+5A8zA==}
     dependencies:
@@ -7386,6 +7396,15 @@ packages:
     resolution: {integrity: sha512-r5o/V/ORTA6TmUnyWZR9nCj1klXCO2CEKNRlVuJptZe85QuhFayC7WeMic7ndayT5IRIR0S0xFxFi2ousartlQ==}
     dev: false
 
+  /phosphor-react@1.4.1(react@18.2.0):
+    resolution: {integrity: sha512-gO5j7U0xZrdglTAYDYPACU4xDOFBTJmptrrB/GeR+tHhCZF3nUMyGmV/0hnloKjuTrOmpSFlbfOY78H39rgjUQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>=16'
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
 
@@ -8115,6 +8134,13 @@ packages:
   /react-is@18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
     dev: true
+
+  /react@18.2.0:
+    resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      loose-envify: 1.4.0
+    dev: false
 
   /read-cache@1.0.0:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}

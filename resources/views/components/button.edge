@@ -1,26 +1,29 @@
 <button type="{{ $props.type ?? 'button' }}"
-  class="{{clsx('font-bold text-lg relative group focus-visible:outline-none', $props.class)}}">
+  class="{{clsx('font-semibold text-lg relative group focus-visible:outline-none', $props.class)}}">
   <span class="{{
     clsx(
-      'relative border-2 border-black inline-block w-full',
+      'relative border-[1.5px] rounded-sm border-black inline-block w-full',
       'h-full px-3 py-2 z-10 -translate-x-1 -translate-y-1',
       'group-focus:translate-x-0 group-focus:translate-y-0 transition-transform duration-150',
       {
-        'bg-[#9f6dec]': ($props.variant ?? 'primary') === 'primary',
+        'bg-primary': ($props.variant ?? 'primary') === 'primary',
         'bg-black text-white': $props.variant === 'dark',
+        'bg-transparent': $props.variant === 'hollow',
       }
     )
     }}">
     {{{ await $slots.main() || 'Link' }}}
   </span>
 
+  @if($props.variant !== 'hollow')
   <span class="{{
     clsx(
-      'absolute inline-block w-full h-full inset-0 pointer-events-none',
+      'absolute inline-block w-full h-full inset-0 pointer-events-none rounded-sm',
       {
         'bg-black': ($props.variant ?? 'primary') === 'primary',
-        'bg-transparent border-2 border-black': $props.variant === 'dark',
+        'bg-transparent border-[1.5px] border-black': $props.variant === 'dark',
       }
     )
   }}"></span>
+  @endif
 </button>
