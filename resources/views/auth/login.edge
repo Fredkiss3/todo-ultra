@@ -24,6 +24,12 @@
 
   @endif
 
+  @if(flashMessages.get('github.auth.error'))
+  <div class="border-2 border-red-500 bg-red-100 text-red-500 px-2 py-3" role="alert" aria-live="assertive">
+    {{flashMessages.get('github.auth.error')}}
+  </div>
+  @endif
+
   <form method="POST" class="flex flex-col gap-4">
     {{ csrfField() }}
 
@@ -45,6 +51,10 @@
 
     @component('components/button', { type: 'submit' })
     Login with email
+    @end
+
+    @component('components/linkbutton', { href: '/github/redirect', variant: 'dark', disableSpaNavigation: true })
+    Login with Github
     @end
   </form>
 </section>

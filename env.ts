@@ -28,4 +28,7 @@ export default Env.rules({
   REDIS_PORT: Env.schema.number(),
   REDIS_PASSWORD: Env.schema.string(),
   DATABASE_URL: Env.schema.string(),
+  GITHUB_CLIENT_ID: Env.schema.string(),
+  GITHUB_CLIENT_SECRET: Env.schema.string(),
+  GITHUB_CLIENT_REDIRECT_URI: Env.schema.string({ format: 'url', tld: false }),
 })

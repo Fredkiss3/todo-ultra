@@ -24,6 +24,7 @@ model User {
   email           String   @unique
   password        String
   rememberMeToken String?
+  githubId        String?  @unique
   updatedAt       DateTime @updatedAt
   createdAt       DateTime @default(now())
 }

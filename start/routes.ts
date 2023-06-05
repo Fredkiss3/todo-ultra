@@ -24,6 +24,11 @@ import HealthCheck from '@ioc:Adonis/Core/HealthCheck'
 Route.get('/', 'HomeController.index').as('home.index').middleware('auth')
 
 Route.group(() => {
+  Route.get('/redirect', 'GithubOAuthController.redirect')
+  Route.get('/callback', 'GithubOAuthController.callback')
+}).prefix('/github')
+
+Route.group(() => {
   Route.get('/register', 'RegisterController.create').as('auth.register')
   Route.post('/register', 'RegisterController.store')
 

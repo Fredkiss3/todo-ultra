@@ -29,7 +29,8 @@
     "@adonisjs/redis",
     "@melchyore/adonis-cache",
     "@wahyubucil/adonis-prisma",
-    "@adonisjs/auth"
+    "@adonisjs/auth",
+    "@adonisjs/ally"
   ],
   "metaFiles": [
     {

@@ -1,5 +1,5 @@
-<button type="{{ $props.type ?? 'button' }}"
-  class="{{clsx('font-bold text-lg relative group focus-visible:outline-none', $props.class)}}">
+<a href="{{$props.href ?? ''}}" up-follow="{{ !$props.disableSpaNavigation }}"
+  class="{{clsx('font-bold text-lg relative group focus-visible:outline-none text-center', $props.class)}}">
   <span class="{{
     clsx(
       'relative border-2 border-black inline-block w-full',
@@ -23,4 +23,4 @@
       }
     )
   }}"></span>
-</button>
+</a>
