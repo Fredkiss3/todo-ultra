@@ -1,12 +1,14 @@
+@set('id', $props.id ?? $props.name)
+
 <fieldset class="flex flex-col gap-2">
-  <label for="{{ $props.id ?? $props.name }}" class="{{
+  <label for="{{ id }}" class="{{
     clsx(
       'flex items-center gap-2 font-semibold',
       $props.class
     )
   }}">
-    <input type="checkbox" id="{{ $props.id ?? $props.name }}" name="{{ $props.name }}" {{ $props.checked ? 'checked'
-      : '' }} class="sr-only peer" />
+    <input type="checkbox" id="{{ id }}" name="{{ $props.name }}" {{ $props.checked ? 'checked' : '' }}
+      class="sr-only peer" aria-invalid="{{ !!$props.error }}" />
     <div class="{{
     clsx(
       'h-4 w-4 inline-flex flex-col items-center justify-center',
@@ -21,7 +23,7 @@
   </label>
 
   @if($props.error)
-  @component('components/alert')
+  @component('components/alert', {id: `${id}-error` })
   {{ $props.error }}
   @end
   @endif

@@ -1,5 +1,7 @@
+@set('id', $props.id ?? $props.name)
+
 <fieldset class="flex flex-col gap-2">
-  <label for="{{ $props.id ?? $props.name }}" class="font-semibold">{{ $props.label ?? 'label' }}</label>
+  <label for="{{ id }}" class="font-semibold">{{ $props.label ?? 'label' }}</label>
   <div class="{{
     clsx(
       'border-[1.5px] border-black px-3 py-2 bg-white rounded-sm',
@@ -8,7 +10,8 @@
       $props.class
     )
   }}">
-    <input type="{{ $props.type ?? 'text' }}" id="{{ $props.id ?? $props.name }}" name="{{ $props.name }}"
+    <input type="{{ $props.type ?? 'text' }}" id="{{ id }}" name="{{ $props.name }}"
+      aria-describedby="{{ $props.error ? `${id}-error` : '' }}" aria-invalid="{{ !!$props.error }}"
       value="{{ $props.value ?? '' }}" {{ $props.required ? 'required' : '' }}
       placeholder="{{ $props.placeholder ?? 'placeholder' }}" {{ $props.required ? 'required' : '' }}
       class="w-full focus:outline-none placeholder:font-semibold font-semibold" />
@@ -19,7 +22,7 @@
   </div>
 
   @if($props.error)
-  @component('components/alert')
+  @component('components/alert', {id: `${id}-error` })
   {{ $props.error }}
   @end
   @endif

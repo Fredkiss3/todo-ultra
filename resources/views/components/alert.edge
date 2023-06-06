@@ -1,3 +1,4 @@
-<div class="border-2 border-red-500 bg-red-100 text-red-500 px-2 py-3" role="alert" aria-live="assertive">
+<div {{ $props.id ? `id=${$props.id}` : '' }} class="border-2 border-red-500 bg-red-100 text-red-500 px-2 py-3"
+  role="alert" aria-live="assertive">
   {{{ await $slots.main() }}}
 </div>
