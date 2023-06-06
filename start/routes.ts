@@ -21,7 +21,7 @@
 import Route from '@ioc:Adonis/Core/Route'
 import HealthCheck from '@ioc:Adonis/Core/HealthCheck'
 
-Route.get('/', 'HomeController.index').as('home.index').middleware('auth')
+Route.get('/', 'HomeController.index').as('home.index')
 
 Route.group(() => {
   Route.get('/redirect', 'GithubOAuthController.redirect')

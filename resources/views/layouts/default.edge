@@ -21,8 +21,8 @@
         Todo-Ultra ⚡️
       </a>
       @if(!auth.isLoggedIn)
-      {{-- <a href="/auth/login" class="underline text-indigo-700">Login</a>
-      <a href="/auth/register" class="underline text-indigo-700">Register</a> --}}
+      <a href="/auth/login" class="underline text-indigo-700" up-follow="false">Login</a>
+      <a href="/auth/register" class="underline text-indigo-700" up-follow="false">Register</a>
       @else
       <a href="/" class="underline text-indigo-700">Home</a>
       <form action="{{ route('auth.logout') }}?_method=DELETE" method="POST" class="inline">
@@ -36,6 +36,7 @@
   </header>
 
   <main class="relative z-10 mx-auto max-w-[1000px]">
+    {{ inspect(flashMessages.all()) }}
     @!section('main')
   </main>
 
