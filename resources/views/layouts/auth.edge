@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title ?? 'Login' }} - Todo-Ultra </title>
+  @entryPointStyles('app')
+  @entryPointScripts('app')
+</head>
+
+<body class="bg-background h-[90vh] lg:h-[80vh] overflow-y-clip">
+  <img src="https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64373975f67600ac6512f2d8_bruddle-header-bg.jpg"
+    loading="lazy" sizes="100vw" alt="page backgroud"
+    srcset="https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64373975f67600ac6512f2d8_bruddle-header-bg-p-500.jpg 500w, https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64373975f67600ac6512f2d8_bruddle-header-bg-p-800.jpg 800w, https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64373975f67600ac6512f2d8_bruddle-header-bg-p-1080.jpg 1080w, https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64373975f67600ac6512f2d8_bruddle-header-bg-p-1600.jpg 1600w, https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64373975f67600ac6512f2d8_bruddle-header-bg-p-2000.jpg 2000w, https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64373975f67600ac6512f2d8_bruddle-header-bg-p-2600.jpg 2600w, https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64373975f67600ac6512f2d8_bruddle-header-bg-p-3200.jpg 3200w, https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64373975f67600ac6512f2d8_bruddle-header-bg.jpg 3280w"
+    class="fixed inset-0 object-center object-cover">
+
+  <header class="relative z-10 h-20 p-4 md:p-8 lg:px-0 max-w-[1000px] mx-auto">
+    <nav>
+      <a href="/" class="font-extrabold uppercase">
+        Todo-Ultra ⚡️
+      </a>
+    </nav>
+  </header>
+
+  <main class="relative z-10 mx-auto h-full w-full flex items-center justify-center max-w-[1000px]">
+    <div class="grid grid-cols-1 p-4 md:p-8 lg:p-0 lg:grid-cols-2 gap-24 w-full place-items-center">
+
+      <section class="flex flex-col gap-4 w-full h-full md:w-[400px] lg:w-full md:mx-auto lg:mx-0 ">
+        @!section('form')
+      </section>
+
+      <section class="hidden lg:flex relative items-center justify-center h-full w-full">
+
+        <img
+          src="https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64386b7ca64c0d7f61f31ac9_bruddle-header-mockup5.jpg"
+          loading="lazy" sizes="(max-width: 991px) 100vw, 1vw"
+          srcset="https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64386b7ca64c0d7f61f31ac9_bruddle-header-mockup5-p-500.jpg 500w, https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64386b7ca64c0d7f61f31ac9_bruddle-header-mockup5-p-800.jpg 800w, https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64386b7ca64c0d7f61f31ac9_bruddle-header-mockup5.jpg 872w"
+          alt="Neubrutalism UI Design"
+          class="hidden lg:block h-[150px] object-center object-contain absolute -left-2 -top-5 z-[2] border-[1.5px] border-black hover:shadow-dark transition-shadow">
+
+        <img
+          src="https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64386c213088c16aca5d3295_bruddle-header-mockup7.jpg"
+          loading="lazy" sizes="(max-width: 991px) 100vw, 1vw"
+          srcset="https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64386c213088c16aca5d3295_bruddle-header-mockup7-p-500.jpg 500w, https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64386c213088c16aca5d3295_bruddle-header-mockup7-p-800.jpg 800w, https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64386c213088c16aca5d3295_bruddle-header-mockup7.jpg 808w"
+          alt="Neubrutalism UI Design"
+          class="hidden lg:block w-[300px] object-center object-contain relative z-[1] border-[1.5px] border-black">
+
+
+        <img
+          src="https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64386e2f4fa4ad0cbe18bcae_bruddle-header-mockup9.jpg"
+          loading="lazy" sizes="(max-width: 991px) 100vw, 1vw"
+          srcset="https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64386e2f4fa4ad0cbe18bcae_bruddle-header-mockup9-p-500.jpg 500w, https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64386e2f4fa4ad0cbe18bcae_bruddle-header-mockup9.jpg 776w"
+          alt="Neo Brutalism UI Design"
+          class="hidden lg:block w-[350px] object-center object-contain absolute -right-12 -bottom-5 z-[2] border-[1.5px] border-black hover:shadow-dark transition-shadow">
+
+      </section>
+
+    </div>
+  </main>
+</body>
+
+</html>

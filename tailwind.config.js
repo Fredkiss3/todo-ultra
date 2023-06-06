@@ -11,6 +11,9 @@ module.exports = {
           DEFAULT: '#f9f4f0',
         },
       },
+      boxShadow: {
+        dark: `4px 4px rgba(0,0,0,1)`,
+      },
     },
   },
   plugins: [],

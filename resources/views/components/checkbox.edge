@@ -1,24 +1,24 @@
 <fieldset class="flex flex-col gap-2">
-
-  <div class="{{
+  <label for="{{ $props.id ?? $props.name }}" class="{{
     clsx(
-      'flex items-center gap-2',
+      'flex items-center gap-2 font-semibold',
       $props.class
     )
   }}">
     <input type="checkbox" id="{{ $props.id ?? $props.name }}" name="{{ $props.name }}" {{ $props.checked ? 'checked'
       : '' }} class="sr-only peer" />
     <div class="{{
-      clsx(
-        'h-4 w-4 inline-flex flex-col items-center justify-center',
-        'border-[1.5px] border-black  bg-white rounded-sm ',
-        'peer-focus:ring-2 ring-primary [&>svg]:hidden peer-checked:[&>svg]:block'
-      )
-      }}">
+    clsx(
+      'h-4 w-4 inline-flex flex-col items-center justify-center',
+      'border-[1.5px] border-black  bg-white rounded-sm ',
+      'peer-focus:ring-2 ring-primary [&>svg]:hidden peer-checked:[&>svg]:block'
+    )
+    }}">
       @!component('components/icons/check', {class: 'h-4 w-4'})
     </div>
-    <label for="{{ $props.id ?? $props.name }}" class="font-semibold">{{ $props.label ?? 'label' }}</label>
-  </div>
+
+    {{ $props.label ?? 'label' }}
+  </label>
 
   @if($props.error)
   @component('components/alert')

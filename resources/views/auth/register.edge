@@ -1,83 +1,83 @@
-@layout('layouts/default')
+@layout('layouts/auth')
 @set('title', 'Register')
 
-@section('main')
-
-<section class="flex flex-col p-4 gap-4">
-  <h1 class="text-4xl font-extrabold">
-    Register
-  </h1>
-
-  <h2 class="text-gray-600">Before we start, please create an account</h2>
-
-  <form method="POST" class="flex flex-col gap-4">
-    {{ csrfField() }}
-
-    @component('components/input', {
-    label: 'Your first name',
-    name: 'firstName',
-    placeholder: 'Alex',
-    error: flashMessages.get('errors.firstName', ''),
-    value: flashMessages.get('firstName', ''),
-    required: true
-    })
-    @slot('icon')
-    @!component('components/icons/user', {class: 'h-4 w-4'})
-    @end
-    @end
+@section('form')
 
 
-    @component('components/input', {
-    type: 'email',
-    label: 'Email',
-    name: 'email',
-    placeholder: 'ex: email@domain.com',
-    error: flashMessages.get('errors.email', ''),
-    value: flashMessages.get('email', ''),
-    required: true
-    })
-    @slot('icon')
-    @!component('components/icons/email', {class: 'h-4 w-4'})
-    @end
-    @end
 
-    @component('components/input', {
-    type: 'password',
-    label: 'Password',
-    name: 'password',
-    placeholder: 'a secure password',
-    error: flashMessages.get('errors.password', ''),
-    required: true
-    })
-    @slot('icon')
-    <password-input-toggle class="inline-flex" field-id="password" hidden-text="Show password"
-      visible-text="Hide password">
-    </password-input-toggle>
-    @end
-    @end
+<h1 class="text-4xl font-extrabold">
+  Register
+</h1>
 
-    @component('components/input', {
-    type: 'password',
-    label: 'Confirm password',
-    name: 'password_confirmation',
-    placeholder: 'a secure password',
-    error: flashMessages.get('errors.password_confirmation', ''),
-    required: true
-    })
-    @slot('icon')
-    <password-input-toggle class="inline-flex" field-id="password_confirmation" hidden-text="Show password"
-      visible-text="Hide password">
-    </password-input-toggle>
-    @end
-    @end
+<h2 class="text-gray-600">Before we start, please create an account</h2>
 
-    @component('components/button', { type: 'submit' })
-    Create account
-    @end
-  </form>
+<form method="POST" class="flex flex-col gap-4">
+  {{ csrfField() }}
 
-  <p class="text-center">Already registered ? <a href="/auth/login" class="underline font-bold">Login to your
-      account</a></p>
-</section>
+  @component('components/input', {
+  label: 'Your first name',
+  name: 'firstName',
+  placeholder: 'Alex',
+  error: flashMessages.get('errors.firstName', ''),
+  value: flashMessages.get('firstName', ''),
+  required: true
+  })
+  @slot('icon')
+  @!component('components/icons/user', {class: 'h-4 w-4'})
+  @end
+  @end
+
+
+  @component('components/input', {
+  type: 'email',
+  label: 'Email',
+  name: 'email',
+  placeholder: 'ex: email@domain.com',
+  error: flashMessages.get('errors.email', ''),
+  value: flashMessages.get('email', ''),
+  required: true
+  })
+  @slot('icon')
+  @!component('components/icons/email', {class: 'h-4 w-4'})
+  @end
+  @end
+
+  @component('components/input', {
+  type: 'password',
+  label: 'Password',
+  name: 'password',
+  placeholder: 'a secure password',
+  error: flashMessages.get('errors.password', ''),
+  required: true
+  })
+  @slot('icon')
+  <password-input-toggle class="inline-flex" field-id="password" hidden-text="Show password"
+    visible-text="Hide password">
+  </password-input-toggle>
+  @end
+  @end
+
+  @component('components/input', {
+  type: 'password',
+  label: 'Confirm password',
+  name: 'password_confirmation',
+  placeholder: 'a secure password',
+  error: flashMessages.get('errors.password_confirmation', ''),
+  required: true
+  })
+  @slot('icon')
+  <password-input-toggle class="inline-flex" field-id="password_confirmation" hidden-text="Show password"
+    visible-text="Hide password">
+  </password-input-toggle>
+  @end
+  @end
+
+  @component('components/button', { type: 'submit' })
+  Create account
+  @end
+</form>
+
+<p class="text-center">Already registered ? <a href="/auth/login" class="underline font-bold">Login to your
+    account</a></p>
 
 @endsection
