@@ -17,7 +17,7 @@
 
   <header class="relative z-10 h-20 p-4 md:p-8 lg:px-0 max-w-[1000px] mx-auto">
     <nav>
-      <a href="/" class="font-extrabold uppercase" up-follow="false">
+      <a href="/" class="font-extrabold uppercase">
         Todo-Ultra ⚡️
       </a>
     </nav>
@@ -31,7 +31,6 @@
       </section>
 
       <section class="hidden lg:flex relative items-center justify-center h-full w-full">
-
         <img
           src="https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64386b7ca64c0d7f61f31ac9_bruddle-header-mockup5.jpg"
           loading="lazy" sizes="(max-width: 991px) 100vw, 1vw"
@@ -58,6 +57,11 @@
 
     </div>
   </main>
+
+  <footer class="text-center fixed bottom-0 left-0 right-0 p-4">
+    <p>&copy; {{ new Date().getFullYear() }} by <a class="underline" href="https://fredkiss.dev">Fredkiss3</a></p>
+    <p>You can find the source code <a href="https://github.com/Fredkiss3/todo-ultra" class="underline">here</a></p>
+  </footer>
 </body>
 
 </html>

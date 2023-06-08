@@ -11,7 +11,7 @@
 
 <h2 class="text-gray-600">Before we start, please create an account</h2>
 
-<form method="POST" class="flex flex-col gap-4">
+<form method="POST" class="flex flex-col gap-4" up-submit="false">
   {{ csrfField() }}
 
   @component('components/input', {

@@ -5,42 +5,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title ?? 'Home' }} - Todo-Ultra </title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   @entryPointStyles('app')
   @entryPointScripts('app')
 </head>
 
-<body class="bg-background">
-  <img src="https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64373975f67600ac6512f2d8_bruddle-header-bg.jpg"
-    loading="lazy" sizes="100vw" alt="page backgroud"
-    srcset="https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64373975f67600ac6512f2d8_bruddle-header-bg-p-500.jpg 500w, https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64373975f67600ac6512f2d8_bruddle-header-bg-p-800.jpg 800w, https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64373975f67600ac6512f2d8_bruddle-header-bg-p-1080.jpg 1080w, https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64373975f67600ac6512f2d8_bruddle-header-bg-p-1600.jpg 1600w, https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64373975f67600ac6512f2d8_bruddle-header-bg-p-2000.jpg 2000w, https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64373975f67600ac6512f2d8_bruddle-header-bg-p-2600.jpg 2600w, https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64373975f67600ac6512f2d8_bruddle-header-bg-p-3200.jpg 3200w, https://uploads-ssl.webflow.com/5dc1d89ee43b1a1a6645c737/64373975f67600ac6512f2d8_bruddle-header-bg.jpg 3280w"
-    class="absolute inset-0" height="">
-
-  <header class="relative z-10 h-20 p-4">
+<body class="bg-background flex flex-col justify-between h-screen lg:overflow-y-hidden">
+  <header class="relative z-10 h-20 p-4 md:p-8 lg:px-0 max-w-[1000px] mx-auto w-full">
     <nav>
       <a href="/" class="font-extrabold uppercase">
         Todo-Ultra ⚡️
       </a>
-      @if(!auth.isLoggedIn)
-      <a href="/auth/login" class="underline text-indigo-700" up-follow="false">Login</a>
-      <a href="/auth/register" class="underline text-indigo-700" up-follow="false">Register</a>
-      @else
-      <a href="/" class="underline text-indigo-700">Home</a>
-      <form action="{{ route('auth.logout') }}?_method=DELETE" method="POST" class="inline">
-        {{ csrfField() }}
-        <button class="underline text-indigo-700">
-          logout
-        </button>
-      </form>
-      @end
     </nav>
   </header>
 
-  <main class="relative z-10 mx-auto max-w-[1000px]">
-    {{ inspect(flashMessages.all()) }}
-    @!section('main')
-  </main>
 
-  <footer></footer>
+  @!section('main')
+
+  <footer class="text-center p-4 md:p-8 relative z-10">
+    <p>&copy; {{ new Date().getFullYear() }} by <a class="underline" href="https://fredkiss.dev">Fredkiss3</a></p>
+    <p>You can find the source code <a href="https://github.com/Fredkiss3/todo-ultra" class="underline">here</a></p>
+  </footer>
 </body>
 
 </html>

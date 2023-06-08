@@ -29,7 +29,7 @@ Invalid credentials
 @end
 @endif
 
-<form method="POST" class="flex flex-col gap-4">
+<form method="POST" class="flex flex-col gap-4" up-submit="false">
   {{ csrfField() }}
 
   @component('components/input', {
