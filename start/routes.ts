@@ -23,9 +23,12 @@ import HealthCheck from '@ioc:Adonis/Core/HealthCheck'
 
 Route.get('/', 'HomeController.index').as('home.index')
 
+Route.get('/profile', 'ProfileController.index').as('profile.index').middleware('auth')
+Route.post('/profile', 'ProfileController.update').as('profile.update').middleware('auth')
+
 Route.group(() => {
-  Route.get('/redirect', 'GithubOAuthController.redirect')
-  Route.get('/callback', 'GithubOAuthController.callback')
+  Route.get('/redirect', 'GithubOAuthController.redirect').as('github.redirect')
+  Route.get('/callback', 'GithubOAuthController.callback').as('github.callback')
 }).prefix('/github')
 
 Route.group(() => {

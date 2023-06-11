@@ -1,5 +1,5 @@
 import { h } from 'preact'
-import { Eye, EyeClosed, EyeSlash } from 'phosphor-react'
+import { Eye, EyeSlash } from 'phosphor-react'
 import { useState } from 'preact/hooks'
 
 export type PasswordInputToggleProps = {

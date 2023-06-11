@@ -4,17 +4,20 @@
   <label for="{{ id }}" class="font-semibold">{{ $props.label ?? 'label' }}</label>
   <div class="{{
     clsx(
+      $props.class,
       'border-[1.5px] border-black px-3 py-2 bg-white rounded-sm',
       'flex items-center justify-between gap-2',
       'focus-within:ring-2 ring-primary',
-      $props.class
+      {
+        'bg-gray-200 text-gray-500': $props.disabled
+      }
     )
   }}">
     <input type="{{ $props.type ?? 'text' }}" id="{{ id }}" name="{{ $props.name }}"
       aria-describedby="{{ $props.error ? `${id}-error` : '' }}" aria-invalid="{{ !!$props.error }}"
-      value="{{ $props.value ?? '' }}" {{ $props.required ? 'required' : '' }}
+      value="{{ $props.value ?? '' }}" {{ $props.required ? 'required' : '' }} {{ $props.disabled ? 'disabled' : '' }}
       placeholder="{{ $props.placeholder ?? 'placeholder' }}" {{ $props.required ? 'required' : '' }}
-      class="w-full focus:outline-none placeholder:font-semibold font-semibold" />
+      class="w-full focus:outline-none placeholder:font-semibold font-semibold bg-transparent" />
 
     @if($slots.icon)
     {{{ await $slots.icon() }}}

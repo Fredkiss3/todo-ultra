@@ -1,12 +1,23 @@
+import Env from '@ioc:Adonis/Core/Env'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { prisma } from '@ioc:Adonis/Addons/Prisma'
 
 export default class GithubOAuthController {
-  public async redirect({ ally }: HttpContextContract) {
-    return ally.use('github').redirect()
+  public async redirect({ ally, request, auth }: HttpContextContract) {
+    return ally.use('github').redirect((redirectRequest) => {
+      if (auth.isLoggedIn) {
+        const query = request.qs()
+        if (query.link_account === 'true') {
+          redirectRequest.param(
+            'redirect_uri',
+            `${Env.get('GITHUB_CLIENT_REDIRECT_URI')}?link_account=true`
+          )
+        }
+      }
+    })
   }
 
-  public async callback({ ally, session, response, auth }: HttpContextContract) {
+  public async callback({ ally, session, response, auth, request }: HttpContextContract) {
     const github = ally.use('github')
 
     /**
@@ -35,6 +46,37 @@ export default class GithubOAuthController {
 
     const githubUser = await github.user()
 
+    const query = request.qs()
+
+    // In case of account linking
+    if (query.link_account === 'true') {
+      if (auth.isLoggedIn) {
+        const user = auth.user
+
+        await prisma.user.update({
+          data: {
+            githubId: githubUser.id.toString(),
+          },
+          where: {
+            id: user!.id,
+          },
+        })
+
+        session.flash(
+          'success',
+          'Your github account has been associated, you can now login with it'
+        )
+        return response.redirect().toRoute('profile.index')
+      } else {
+        session.flash(
+          'github.auth.error',
+          'You cannot associate an account without being logged in'
+        )
+        return response.redirect().toRoute('auth.login')
+      }
+    }
+
+    // In case of login
     const user = await prisma.user.findFirst({
       where: { githubId: githubUser.id.toString() },
     })

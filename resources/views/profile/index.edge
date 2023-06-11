@@ -1,0 +1,55 @@
+@layout('layouts/default')
+
+
+@section('main')
+<main class="max-w-[1000px] mx-auto p-4 md:p-8 w-full h-full flex gap-4 flex-col">
+
+  @if(flashMessages.get('success'))
+  @component('components/alert', {type: 'success'})
+  {{ flashMessages.get('success')}}
+  @end
+  @end
+
+  <h1 class="text-3xl font-bold">
+    Profile settings
+  </h1>
+
+  <form method="POST" class="w-full flex flex-col gap-4">
+    {{ csrfField()}}
+
+    @!component('components/input', {
+    label: 'email',
+    disabled: true,
+    type: 'email',
+    value: auth.user?.email
+    })
+
+    @!component('components/input', {
+    label: 'firstName',
+    type: 'text',
+    name: 'firstName',
+    value: auth.user?.firstName,
+    error: flashMessages.get('errors.firstName', ''),
+    required: true
+    })
+
+    @component('components/button', {type: 'submit'})
+    update settings
+    @end
+
+    <div class="flex gap-2 items-center justify-center px-8">
+      <hr class="h-[2px] w-full bg-black" />
+      <span>Or</span>
+      <hr class="h-[2px] w-full bg-black" />
+    </div>
+
+
+    @component('components/linkbutton', {href: route('github.redirect') + "?link_account=true", variant: 'hollow',
+    disableSpaNavigation: true})
+    Associate your github account
+    @end
+  </form>
+
+
+</main>
+@end
